@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Nosso Primeiro Acerto Crítico</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #0f0f1a, #1a1a3d, #0f0f1a);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Playfair Display', serif;
+        color: #3a2f1b;
+    }
+
+    .pergaminho {
+        background: linear-gradient(180deg, #f7efd2, #efe2b6);
+        max-width: 650px;
+        padding: 50px;
+        border-radius: 18px;
+        box-shadow:
+            0 0 40px rgba(255, 215, 120, 0.35),
+            inset 0 0 25px rgba(255, 255, 255, 0.6);
+        position: relative;
+        animation: aparecer 2s ease;
+    }
+
+    .pergaminho::before,
+    .pergaminho::after {
+        content: "✦";
+        position: absolute;
+        color: #c9a24d;
+        font-size: 28px;
+    }
+
+    .pergaminho::before {
+        top: 15px;
+        left: 20px;
+    }
+
+    .pergaminho::after {
+        bottom: 15px;
+        right: 20px;
+    }
+
+    h1 {
+        font-family: 'Cinzel', serif;
+        text-align: center;
+        color: #7a5c1c;
+        margin-bottom: 35px;
+        letter-spacing: 2px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.7;
+        margin: 14px 0;
+    }
+
+    .assinatura {
+        margin-top: 35px;
+        text-align: right;
+        font-style: italic;
+        color: #6b4e16;
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div class="pergaminho">
+        <h1>🗝️ O Baú se Abriu</h1>
+
+        <p>Meu amor,</p>
+
+        <p>
+            Se esse baú abriu, é porque você concluiu o primeiro desafio.<br>
+            Agora posso te contar meu pequeno segredo:
+        </p>
+
+        <p>
+            Eu aprendi a jogar RPG.<br>
+            Aprendi porque esse mundo faz seus olhos brilharem,<br>
+            aprendi porque isso te faz feliz…<br>
+            e porque eu quero viver aventuras ao seu lado.
+        </p>
+
+        <p>
+            Quero rolar dados com você, enfrentar monstros<br>
+            e construir histórias que sejam só nossas.
+        </p>
+
+        <p>
+            Esse é o nosso primeiro acerto crítico juntos.<br>
+            E eu mal posso esperar pela nossa próxima missão.
+        </p>
+
+        <div class="assinatura">
+            <p>
+                Com amor,<br>
+                sua parceira de campanha, e de vida.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
