@@ -127,11 +127,11 @@
         </div>
 
         <!-- MÚSICA -->
-        <div class="musica">
+       <div class="musica">
     <button onclick="tocarMusica()">🎵 Iniciar trilha da aventura</button>
 
     <audio id="audio">
-        <source src="Bruno Major - Nothing (Lyric & Chord Video).mp3" type="audio/mpeg">
+        <source src="nothing.mp3" type="audio/mpeg">
     </audio>
 </div>
 
@@ -141,7 +141,6 @@ function tocarMusica() {
     audio.play();
 }
 </script>
-
     </div>
 </body>
 </html>
