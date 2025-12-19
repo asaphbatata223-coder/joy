@@ -128,11 +128,20 @@
 
         <!-- MÚSICA -->
         <div class="musica">
-            <audio controls autoplay loop>
-                <source src="Bruno Major - Nothing (Lyric & Chord Video).mp3" type="audio/mpeg">
-                Seu navegador não suporta áudio.
-            </audio>
-        </div>
+    <button onclick="tocarMusica()">🎵 Iniciar trilha da aventura</button>
+
+    <audio id="audio">
+        <source src="Bruno Major - Nothing (Lyric & Chord Video).mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+function tocarMusica() {
+    const audio = document.getElementById("audio");
+    audio.play();
+}
+</script>
+
     </div>
 </body>
 </html>
