@@ -9,165 +9,187 @@
 <style>
 body {
     margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #1a1a3d, #070710);
+    height: 100vh;
+    background: radial-gradient(circle at top, #1a1a3d, #050509);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Playfair Display', serif;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-/* ================= BAÚ ================= */
-.intro {
+/* ===== INTRO ===== */
+#intro {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle, #2b1d0f, #070707);
+    background: radial-gradient(circle, #1a1a3d, #000);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
-    animation: sumir 1.5s ease forwards;
-    animation-delay: 6s;
+    z-index: 9999;
+    animation: introOut 2s ease forwards;
+    animation-delay: 7s;
 }
 
-.bau {
-    width: 260px;
-    height: 170px;
-    position: relative;
-}
-
-.base {
+/* PARTÍCULAS */
+.particula {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 90px;
-    background: linear-gradient(#7b4a1c, #3b1f0d);
-    border-radius: 0 0 18px 18px;
-    box-shadow: inset 0 0 0 6px #2a1408;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,215,150,0.8);
+    border-radius: 50%;
+    animation: flutuar 6s infinite ease-in-out;
 }
 
+.particula:nth-child(1){left:20%;animation-delay:0s}
+.particula:nth-child(2){left:40%;animation-delay:2s}
+.particula:nth-child(3){left:60%;animation-delay:1s}
+.particula:nth-child(4){left:80%;animation-delay:3s}
+
+/* ===== BAÚ ===== */
+.bau {
+    position: relative;
+    width: 220px;
+    height: 160px;
+    animation: pulsar 2s infinite alternate;
+}
+
+/* TAMPA (abre de verdade) */
 .tampa {
     position: absolute;
     top: 0;
     width: 100%;
     height: 80px;
-    background: linear-gradient(#b57a38, #6b3f18);
-    border-radius: 18px 18px 0 0;
+    background: linear-gradient(180deg, #b57a38, #6b3f18);
+    border-radius: 16px 16px 0 0;
     transform-origin: bottom center;
-    animation: abrirTampa 2.8s ease forwards;
-    animation-delay: 2s;
-    box-shadow: inset 0 0 0 6px #3b1f0d;
+    animation: abrirTampa 3s ease forwards;
+    animation-delay: 3.5s;
+    box-shadow: inset 0 0 0 5px #3b1f0d;
 }
 
-.luz {
+/* BASE */
+.base {
     position: absolute;
-    bottom: 70px;
-    left: 50%;
-    width: 220px;
-    height: 220px;
-    background: radial-gradient(circle, rgba(255,220,140,0.9), transparent 70%);
-    transform: translateX(-50%);
-    opacity: 0;
-    animation: brilhar 3s ease forwards;
-    animation-delay: 2.8s;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(180deg, #7a4b1f, #3a1f0d);
+    border-radius: 0 0 16px 16px;
+    box-shadow: inset 0 0 0 5px #2a1408;
 }
 
-@keyframes abrirTampa {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(-8deg); }
-    100% { transform: translateY(-60px) rotate(-18deg); }
+/* METAL */
+.base::before,
+.tampa::before {
+    content:"";
+    position:absolute;
+    left:0;
+    width:100%;
+    height:10px;
+    background:linear-gradient(90deg,#555,#bbb,#555);
 }
 
-@keyframes brilhar {
-    to { opacity: 1; }
+.base::before{top:30px}
+.tampa::before{top:30px}
+
+/* FECHADURA */
+.fechadura {
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:30px;
+    height:26px;
+    background:linear-gradient(180deg,#ffe28a,#b8942e);
+    border-radius:6px;
+    box-shadow:0 0 20px rgba(255,215,120,1);
+    animation: brilhoFechadura 2s ease forwards;
+    animation-delay: 2s;
 }
 
-@keyframes sumir {
-    to { opacity: 0; pointer-events: none; }
+/* LUZ INTERNA */
+.luz {
+    position:absolute;
+    inset:-40px;
+    background: radial-gradient(circle, rgba(255,215,150,0.9), transparent 70%);
+    opacity:0;
+    animation: explodir 1.5s ease forwards;
+    animation-delay: 4.8s;
+    pointer-events:none;
 }
 
-/* ================= PERGAMINHO ================= */
+/* ===== PERGAMINHO ===== */
 .pergaminho {
-    background: linear-gradient(#f7efd2, #efe2b6);
+    background: linear-gradient(180deg, #f7efd2, #efe2b6);
     max-width: 650px;
     padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 0 50px rgba(255,215,120,0.4);
-    animation: aparecer 2s ease;
-    z-index: 2;
+    border-radius: 18px;
+    box-shadow:
+        0 0 50px rgba(255,215,120,0.4),
+        inset 0 0 25px rgba(255,255,255,0.6);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: surgir 2s ease forwards;
+    animation-delay: 7s;
+    color:#3a2f1b;
 }
 
 h1 {
-    font-family: 'Cinzel', serif;
-    text-align: center;
-    color: #7a5c1c;
-    letter-spacing: 2px;
+    font-family:'Cinzel',serif;
+    text-align:center;
+    color:#7a5c1c;
+    margin-bottom:30px;
 }
 
 p {
-    font-size: 18px;
-    line-height: 1.7;
+    line-height:1.7;
+    font-size:18px;
+    margin:14px 0;
 }
 
 .assinatura {
-    text-align: right;
-    font-style: italic;
-    margin-top: 30px;
+    text-align:right;
+    margin-top:30px;
+    font-style:italic;
 }
 
-/* ================= FOTOS ================= */
-.fotos-laterais img {
-    position: fixed;
-    width: 120px;
-    padding: 8px;
-    background: #fff;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
-    border-radius: 6px;
-    z-index: 1;
+/* ===== ANIMAÇÕES ===== */
+@keyframes abrirTampa {
+    0%   { transform: translateY(0) rotate(0deg); }
+    40%  { transform: translateY(-15px) rotate(-5deg); }
+    70%  { transform: translateY(-35px) rotate(-10deg); }
+    100% { transform: translateY(-55px) rotate(-15deg); }
 }
 
-.foto1 { top: 10%; left: 5%; transform: rotate(-8deg); }
-.foto2 { top: 35%; left: 3%; transform: rotate(5deg); }
-.foto3 { top: 60%; left: 6%; transform: rotate(-4deg); }
-.foto4 { bottom: 8%; left: 4%; transform: rotate(6deg); }
-
-.foto5 { top: 12%; right: 5%; transform: rotate(7deg); }
-.foto6 { top: 38%; right: 3%; transform: rotate(-6deg); }
-.foto7 { top: 62%; right: 6%; transform: rotate(4deg); }
-.foto8 { bottom: 10%; right: 4%; transform: rotate(-5deg); }
-
-@keyframes aparecer {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes explodir { to { opacity:1; } }
+@keyframes pulsar { from{transform:scale(1)} to{transform:scale(1.03)} }
+@keyframes brilhoFechadura { to{box-shadow:0 0 35px rgba(255,215,150,1)} }
+@keyframes flutuar { from{bottom:-10%} to{bottom:110%} }
+@keyframes introOut { to{opacity:0; visibility:hidden} }
+@keyframes surgir { to{opacity:1; transform:scale(1)} }
 </style>
 </head>
 
 <body>
 
-<!-- Fotos -->
-<div class="fotos-laterais">
-    <img src="bg1.jpeg" class="foto1">
-    <img src="bg2.jpeg" class="foto2">
-    <img src="bg3.jpeg" class="foto3">
-    <img src="bg4.jpeg" class="foto4">
-    <img src="bg5.jpeg" class="foto5">
-    <img src="bg6.jpeg" class="foto6">
-    <img src="bg7.jpeg" class="foto7">
-    <img src="bg8.jpeg" class="foto8">
-</div>
+<!-- INTRO -->
+<div id="intro">
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
 
-<!-- Intro Baú -->
-<div class="intro">
     <div class="bau">
         <div class="tampa"></div>
-        <div class="base"></div>
+        <div class="base">
+            <div class="fechadura"></div>
+        </div>
         <div class="luz"></div>
     </div>
 </div>
 
-<!-- Pergaminho -->
+<!-- PERGAMINHO -->
 <div class="pergaminho">
     <h1>🗝️ O Baú se Abriu</h1>
 
@@ -200,6 +222,7 @@ p {
         sua parceira de campanha, e de vida.
     </div>
 
+    <!-- SPOTIFY -->
     <iframe style="border-radius:12px; margin-top:25px"
         src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3"
         width="100%" height="100" frameborder="0"
@@ -209,4 +232,3 @@ p {
 </div>
 
 </body>
-</html>
