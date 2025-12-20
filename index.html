@@ -18,6 +18,59 @@
         color: #3a2f1b;
     }
 
+    /* ===== TELA DO BAÚ ===== */
+    #tela-bau {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, #0f0f1a, #000);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: sumir 1s ease forwards;
+        animation-delay: 3.5s;
+    }
+
+    .bau {
+        position: relative;
+        width: 160px;
+        height: 120px;
+    }
+
+    .base {
+        width: 100%;
+        height: 70px;
+        background: #6b4e16;
+        border-radius: 0 0 12px 12px;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .tampa {
+        width: 100%;
+        height: 60px;
+        background: #8a6725;
+        border-radius: 12px 12px 0 0;
+        position: absolute;
+        top: 0;
+        transform-origin: bottom center;
+        animation: abrir 2s ease forwards;
+        animation-delay: 1s;
+    }
+
+    @keyframes abrir {
+        from { transform: rotateX(0deg); }
+        to   { transform: rotateX(110deg); }
+    }
+
+    @keyframes sumir {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    /* ===== PERGAMINHO ===== */
     .pergaminho {
         background: linear-gradient(180deg, #f7efd2, #efe2b6);
         max-width: 650px;
@@ -27,7 +80,9 @@
             0 0 40px rgba(255, 215, 120, 0.35),
             inset 0 0 25px rgba(255, 255, 255, 0.6);
         position: relative;
-        animation: aparecer 2s ease;
+        opacity: 0;
+        animation: aparecerPergaminho 1.5s ease forwards;
+        animation-delay: 3.5s;
     }
 
     .pergaminho::before,
@@ -69,61 +124,65 @@
         color: #6b4e16;
     }
 
-    @keyframes aparecer {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.97);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+    @keyframes aparecerPergaminho {
+        to { opacity: 1; }
     }
 </style>
 </head>
 
 <body>
-    <div class="pergaminho">
-        <h1>🗝️ O Baú se Abriu</h1>
 
-        <p>Meu amor,</p>
-
-        <p>
-            Se esse baú abriu, é porque você concluiu o primeiro desafio.<br>
-            Agora posso te contar meu pequeno segredo:
-        </p>
-
-        <p>
-            Eu aprendi a jogar RPG.<br>
-            Aprendi porque esse mundo faz seus olhos brilharem,<br>
-            aprendi porque isso te faz feliz…<br>
-            e porque eu quero viver aventuras ao seu lado.
-        </p>
-
-        <p>
-            Quero rolar dados com você, enfrentar monstros<br>
-            e construir histórias que sejam só nossas.
-        </p>
-
-        <p>
-            Esse é o nosso primeiro acerto crítico juntos.<br>
-            E eu mal posso esperar pela nossa próxima missão.
-        </p>
-
-        <div class="assinatura">
-            <p>
-                Com amor,<br>
-                sua parceira de campanha, e de vida.
-            </p>
-        </div>
-
-        <!-- Player do Spotify -->
-        <iframe data-testid="embed-iframe" style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3?utm_source=generator" 
-            width="100%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; 
-            clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            
-            </iframe>
+<!-- TELA DO BAÚ -->
+<div id="tela-bau">
+    <div class="bau">
+        <div class="tampa"></div>
+        <div class="base"></div>
     </div>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="pergaminho">
+    <h1>🗝️ O Baú se Abriu</h1>
+
+    <p>Meu amor,</p>
+
+    <p>
+        Se esse baú abriu, é porque você concluiu o primeiro desafio.<br>
+        Agora posso te contar meu pequeno segredo:
+    </p>
+
+    <p>
+        Eu aprendi a jogar RPG.<br>
+        Aprendi porque esse mundo faz seus olhos brilharem,<br>
+        aprendi porque isso te faz feliz…<br>
+        e porque eu quero viver aventuras ao seu lado.
+    </p>
+
+    <p>
+        Quero rolar dados com você, enfrentar monstros<br>
+        e construir histórias que sejam só nossas.
+    </p>
+
+    <p>
+        Esse é o nosso primeiro acerto crítico juntos.<br>
+        E eu mal posso esperar pela nossa próxima missão.
+    </p>
+
+    <div class="assinatura">
+        <p>
+            Com amor,<br>
+            sua parceira de campanha, e de vida.
+        </p>
+    </div>
+
+    <!-- PLAYER SPOTIFY (continua funcionando igual) -->
+    <iframe style="border-radius:12px; margin-top:25px"
+        src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3"
+        width="100%" height="100" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+    </iframe>
+</div>
+
 </body>
 </html>
