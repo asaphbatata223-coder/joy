@@ -16,51 +16,110 @@
         align-items: center;
         font-family: 'Playfair Display', serif;
         color: #3a2f1b;
+        overflow: hidden;
     }
 
     /* ===== TELA DO BAÚ ===== */
     #tela-bau {
         position: fixed;
         inset: 0;
-        background: radial-gradient(circle, #0f0f1a, #000);
+        background: radial-gradient(circle, #1a1a3d, #000);
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 9999;
         animation: sumir 1s ease forwards;
-        animation-delay: 3.5s;
+        animation-delay: 4s;
     }
 
     .bau {
         position: relative;
-        width: 160px;
-        height: 120px;
+        width: 180px;
+        height: 130px;
+        perspective: 900px;
     }
 
+    /* BASE */
     .base {
         width: 100%;
-        height: 70px;
-        background: #6b4e16;
-        border-radius: 0 0 12px 12px;
+        height: 75px;
+        background: linear-gradient(180deg, #7a4b1f, #4a2a12);
+        border-radius: 0 0 14px 14px;
         position: absolute;
         bottom: 0;
+        box-shadow: inset 0 0 0 4px #3a1f0d;
     }
 
+    .base::before,
+    .base::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, #666, #aaa, #666);
+    }
+
+    .base::before { top: 20px; }
+    .base::after  { bottom: 15px; }
+
+    /* FECHADURA */
+    .fechadura {
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 26px;
+        height: 22px;
+        background: linear-gradient(180deg, #f5d76e, #b8942e);
+        border-radius: 6px;
+        box-shadow: 0 0 8px rgba(255,215,120,0.6);
+    }
+
+    .fechadura::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid #6b4e16;
+        border-radius: 50%;
+    }
+
+    /* TAMPA */
     .tampa {
         width: 100%;
-        height: 60px;
-        background: #8a6725;
-        border-radius: 12px 12px 0 0;
+        height: 65px;
+        background: linear-gradient(180deg, #9b652f, #5a3418);
+        border-radius: 14px 14px 0 0;
         position: absolute;
         top: 0;
         transform-origin: bottom center;
-        animation: abrir 2s ease forwards;
-        animation-delay: 1s;
+        animation: abrir 2.2s ease forwards;
+        animation-delay: 1.2s;
+        box-shadow: inset 0 0 0 4px #3a1f0d;
+    }
+
+    /* BRILHO */
+    .brilho {
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        background: radial-gradient(circle, rgba(255,215,120,0.6), transparent 70%);
+        opacity: 0;
+        animation: brilho 1.5s ease forwards;
+        animation-delay: 2.2s;
+        pointer-events: none;
     }
 
     @keyframes abrir {
         from { transform: rotateX(0deg); }
         to   { transform: rotateX(110deg); }
+    }
+
+    @keyframes brilho {
+        to { opacity: 1; }
     }
 
     @keyframes sumir {
@@ -82,7 +141,7 @@
         position: relative;
         opacity: 0;
         animation: aparecerPergaminho 1.5s ease forwards;
-        animation-delay: 3.5s;
+        animation-delay: 4s;
     }
 
     .pergaminho::before,
@@ -136,7 +195,10 @@
 <div id="tela-bau">
     <div class="bau">
         <div class="tampa"></div>
-        <div class="base"></div>
+        <div class="base">
+            <div class="fechadura"></div>
+        </div>
+        <div class="brilho"></div>
     </div>
 </div>
 
@@ -175,7 +237,7 @@
         </p>
     </div>
 
-    <!-- PLAYER SPOTIFY (continua funcionando igual) -->
+    <!-- PLAYER SPOTIFY -->
     <iframe style="border-radius:12px; margin-top:25px"
         src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3"
         width="100%" height="100" frameborder="0"
