@@ -153,6 +153,32 @@ p {
     margin-top:30px;
     font-style:italic;
 }
+.fotos-laterais img {
+    position: fixed;
+    width: 120px;
+    padding: 8px;
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.fotos-laterais img:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+/* Lado esquerdo */
+.foto1 { top: 10%; left: 5%; transform: rotate(-8deg); }
+.foto2 { top: 35%; left: 3%; transform: rotate(5deg); }
+.foto3 { top: 60%; left: 6%; transform: rotate(-4deg); }
+.foto4 { bottom: 8%; left: 4%; transform: rotate(6deg); }
+
+/* Lado direito */
+.foto5 { top: 12%; right: 5%; transform: rotate(7deg); }
+.foto6 { top: 38%; right: 3%; transform: rotate(-6deg); }
+.foto7 { top: 62%; right: 6%; transform: rotate(4deg); }
+.foto8 { bottom: 10%; right: 4%; transform: rotate(-5deg); }
 
 /* ===== ANIMAÇÕES ===== */
 @keyframes abrirTampa {
@@ -172,6 +198,18 @@ p {
 </head>
 
 <body>
+
+<div class="fotos-laterais">
+    <img src="imagens/bg1.jpeg" class="foto1">
+    <img src="imagens/bg2.jpeg" class="foto2">
+    <img src="imagens/bg3.jpeg" class="foto3">
+    <img src="imagens/bg4.jpeg" class="foto4">
+
+    <img src="imagens/bg5.jpeg" class="foto5">
+    <img src="imagens/bg6.jpeg" class="foto6">
+    <img src="imagens/bg7.jpeg" class="foto7">
+    <img src="imagens/bg8.jpeg" class="foto8">
+</div>
 
 <!-- INTRO -->
 <div id="intro">
