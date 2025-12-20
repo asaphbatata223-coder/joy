@@ -7,202 +7,171 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        background: linear-gradient(135deg, #0f0f1a, #1a1a3d, #0f0f1a);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Playfair Display', serif;
-        color: #3a2f1b;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #1a1a3d, #050509);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+}
 
-    /* ===== TELA DO BAÚ ===== */
-    #tela-bau {
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(circle, #1a1a3d, #000);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        animation: sumir 1s ease forwards;
-        animation-delay: 4s;
-    }
+/* ===== INTRO ===== */
+#intro {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, #1a1a3d, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: introOut 2s ease forwards;
+    animation-delay: 7s;
+}
 
-    .bau {
-        position: relative;
-        width: 180px;
-        height: 130px;
-        perspective: 900px;
-    }
+/* PARTÍCULAS */
+.particula {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,215,150,0.8);
+    border-radius: 50%;
+    animation: flutuar 6s infinite ease-in-out;
+}
 
-    /* BASE */
-    .base {
-        width: 100%;
-        height: 75px;
-        background: linear-gradient(180deg, #7a4b1f, #4a2a12);
-        border-radius: 0 0 14px 14px;
-        position: absolute;
-        bottom: 0;
-        box-shadow: inset 0 0 0 4px #3a1f0d;
-    }
+.particula:nth-child(1){left:20%;animation-delay:0s}
+.particula:nth-child(2){left:40%;animation-delay:2s}
+.particula:nth-child(3){left:60%;animation-delay:1s}
+.particula:nth-child(4){left:80%;animation-delay:3s}
 
-    .base::before,
-    .base::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: linear-gradient(90deg, #666, #aaa, #666);
-    }
+/* BAÚ */
+.bau {
+    position: relative;
+    width: 220px;
+    height: 160px;
+    perspective: 1000px;
+    animation: pulsar 2s infinite alternate;
+}
 
-    .base::before { top: 20px; }
-    .base::after  { bottom: 15px; }
+/* TAMPA */
+.tampa {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg, #b57a38, #6b3f18);
+    border-radius: 16px 16px 0 0;
+    transform-origin: bottom center;
+    animation: abrir 2.5s ease forwards;
+    animation-delay: 3.5s;
+    box-shadow: inset 0 0 0 5px #3b1f0d;
+}
 
-    /* FECHADURA */
-    .fechadura {
-        position: absolute;
-        top: 35px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 26px;
-        height: 22px;
-        background: linear-gradient(180deg, #f5d76e, #b8942e);
-        border-radius: 6px;
-        box-shadow: 0 0 8px rgba(255,215,120,0.6);
-    }
+/* BASE */
+.base {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(180deg, #7a4b1f, #3a1f0d);
+    border-radius: 0 0 16px 16px;
+    box-shadow: inset 0 0 0 5px #2a1408;
+}
 
-    .fechadura::after {
-        content: "";
-        position: absolute;
-        top: 6px;
-        left: 9px;
-        width: 8px;
-        height: 8px;
-        border: 2px solid #6b4e16;
-        border-radius: 50%;
-    }
+/* METAL */
+.base::before,
+.tampa::before {
+    content:"";
+    position:absolute;
+    left:0;
+    width:100%;
+    height:10px;
+    background:linear-gradient(90deg,#555,#bbb,#555);
+}
 
-    /* TAMPA */
-    .tampa {
-        width: 100%;
-        height: 65px;
-        background: linear-gradient(180deg, #9b652f, #5a3418);
-        border-radius: 14px 14px 0 0;
-        position: absolute;
-        top: 0;
-        transform-origin: bottom center;
-        animation: abrir 2.2s ease forwards;
-        animation-delay: 1.2s;
-        box-shadow: inset 0 0 0 4px #3a1f0d;
-    }
+.base::before{top:30px}
+.tampa::before{top:30px}
 
-    /* BRILHO */
-    .brilho {
-        position: absolute;
-        inset: 0;
-        border-radius: 14px;
-        background: radial-gradient(circle, rgba(255,215,120,0.6), transparent 70%);
-        opacity: 0;
-        animation: brilho 1.5s ease forwards;
-        animation-delay: 2.2s;
-        pointer-events: none;
-    }
+/* FECHADURA */
+.fechadura {
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:30px;
+    height:26px;
+    background:linear-gradient(180deg,#ffe28a,#b8942e);
+    border-radius:6px;
+    box-shadow:0 0 15px rgba(255,215,120,1);
+    animation: brilhoFechadura 2s ease forwards;
+    animation-delay: 2s;
+}
 
-    @keyframes abrir {
-        from { transform: rotateX(0deg); }
-        to   { transform: rotateX(110deg); }
-    }
+/* LUZ */
+.luz {
+    position:absolute;
+    inset:-40px;
+    background: radial-gradient(circle, rgba(255,215,150,0.9), transparent 70%);
+    opacity:0;
+    animation: explodir 1.5s ease forwards;
+    animation-delay: 4.5s;
+}
 
-    @keyframes brilho {
-        to { opacity: 1; }
-    }
+/* ===== PERGAMINHO ===== */
+.pergaminho {
+    background: linear-gradient(180deg, #f7efd2, #efe2b6);
+    max-width: 650px;
+    padding: 50px;
+    border-radius: 18px;
+    box-shadow: 0 0 50px rgba(255,215,120,0.4),
+                inset 0 0 25px rgba(255,255,255,0.6);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: surgir 2s ease forwards;
+    animation-delay: 7s;
+    color:#3a2f1b;
+}
 
-    @keyframes sumir {
-        to {
-            opacity: 0;
-            visibility: hidden;
-        }
-    }
+h1 {
+    font-family:'Cinzel',serif;
+    text-align:center;
+    color:#7a5c1c;
+}
 
-    /* ===== PERGAMINHO ===== */
-    .pergaminho {
-        background: linear-gradient(180deg, #f7efd2, #efe2b6);
-        max-width: 650px;
-        padding: 50px;
-        border-radius: 18px;
-        box-shadow:
-            0 0 40px rgba(255, 215, 120, 0.35),
-            inset 0 0 25px rgba(255, 255, 255, 0.6);
-        position: relative;
-        opacity: 0;
-        animation: aparecerPergaminho 1.5s ease forwards;
-        animation-delay: 4s;
-    }
+p { line-height:1.7; font-size:18px; margin:14px 0; }
 
-    .pergaminho::before,
-    .pergaminho::after {
-        content: "✦";
-        position: absolute;
-        color: #c9a24d;
-        font-size: 28px;
-    }
+.assinatura { text-align:right; margin-top:30px; font-style:italic; }
 
-    .pergaminho::before {
-        top: 15px;
-        left: 20px;
-    }
-
-    .pergaminho::after {
-        bottom: 15px;
-        right: 20px;
-    }
-
-    h1 {
-        font-family: 'Cinzel', serif;
-        text-align: center;
-        color: #7a5c1c;
-        margin-bottom: 35px;
-        letter-spacing: 2px;
-    }
-
-    p {
-        font-size: 18px;
-        line-height: 1.7;
-        margin: 14px 0;
-    }
-
-    .assinatura {
-        margin-top: 35px;
-        text-align: right;
-        font-style: italic;
-        color: #6b4e16;
-    }
-
-    @keyframes aparecerPergaminho {
-        to { opacity: 1; }
-    }
+/* ===== ANIMAÇÕES ===== */
+@keyframes abrir { to { transform: rotateX(110deg); } }
+@keyframes explodir { to { opacity:1; } }
+@keyframes pulsar { from{transform:scale(1)} to{transform:scale(1.03)} }
+@keyframes brilhoFechadura { to{box-shadow:0 0 30px rgba(255,215,150,1)} }
+@keyframes flutuar { from{bottom:-10%} to{bottom:110%} }
+@keyframes introOut { to{opacity:0; visibility:hidden} }
+@keyframes surgir { to{opacity:1; transform:scale(1)} }
 </style>
 </head>
 
 <body>
 
-<!-- TELA DO BAÚ -->
-<div id="tela-bau">
+<div id="intro">
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+    <div class="particula"></div>
+
     <div class="bau">
         <div class="tampa"></div>
         <div class="base">
             <div class="fechadura"></div>
         </div>
-        <div class="brilho"></div>
+        <div class="luz"></div>
     </div>
 </div>
 
-<!-- CONTEÚDO -->
 <div class="pergaminho">
     <h1>🗝️ O Baú se Abriu</h1>
 
@@ -231,13 +200,11 @@
     </p>
 
     <div class="assinatura">
-        <p>
-            Com amor,<br>
-            sua parceira de campanha, e de vida.
-        </p>
+        Com amor,<br>
+        sua parceira de campanha, e de vida.
     </div>
 
-    <!-- PLAYER SPOTIFY -->
+    <!-- SPOTIFY -->
     <iframe style="border-radius:12px; margin-top:25px"
         src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3"
         width="100%" height="100" frameborder="0"
