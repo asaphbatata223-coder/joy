@@ -8,15 +8,28 @@
 
 <style>
     body {
-        margin: 0;
-        height: 100vh;
-        background: linear-gradient(135deg, #0f0f1a, #1a1a3d, #0f0f1a);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Playfair Display', serif;
-        color: #3a2f1b;
-    }
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    color: #3a2f1b;
+    background-size: cover;
+    background-position: center;
+    animation: fundo 40s infinite;
+}
+@keyframes fundo {
+    0%   { background-image: url("imagens/bg1.jpeg"); }
+    12%  { background-image: url("imagens/bg2.jpeg"); }
+    25%  { background-image: url("imagens/bg3.jpeg"); }
+    37%  { background-image: url("imagens/bg4.jpeg"); }
+    50%  { background-image: url("imagens/bg5.jpeg"); }
+    62%  { background-image: url("imagens/bg6.jpeg"); }
+    75%  { background-image: url("imagens/bg7.jpeg"); }
+    87%  { background-image: url("imagens/bg8.jpeg"); }
+    100% { background-image: url("imagens/bg1.jpeg"); }
+}
 
     .pergaminho {
         background: linear-gradient(180deg, #f7efd2, #efe2b6);
