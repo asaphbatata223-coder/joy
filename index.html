@@ -10,12 +10,23 @@
     body {
         margin: 0;
         height: 100vh;
-        background: linear-gradient(135deg, #0f0f1a, #1a1a3d, #0f0f1a);
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: 'Playfair Display', serif;
         color: #3a2f1b;
+
+        /* Slideshow de fundo */
+        background: url("foto1.jpg") no-repeat center center fixed;
+        background-size: cover;
+        animation: trocar 30s infinite;
+    }
+
+    @keyframes trocar {
+        0%   { background-image: url("foto1.jpg"); }
+        33%  { background-image: url("foto2.jpg"); }
+        66%  { background-image: url("foto3.jpg"); }
+        100% { background-image: url("foto1.jpg"); }
     }
 
     .pergaminho {
@@ -117,13 +128,12 @@
             </p>
         </div>
 
-        <!-- Player do Spotify -->
-        <iframe data-testid="embed-iframe" style="border-radius:12px" 
-            src="https://open.spotify.com/embed/track/1lORkxEMmsCZqhoxcmk3A3?utm_source=generator" 
-            width="100%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; 
-            clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-            
-            </iframe>
+        <!-- Player oficial do Spotify -->
+        <iframe style="border-radius:12px; margin-top:25px;" 
+            src="https://open.spotify.com/embed/track/3Zwu2K0Qa5sT6teCCHPShP?utm_source=generator" 
+            width="100%" height="152" frameborder="0" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
     </div>
 </body>
 </html>
