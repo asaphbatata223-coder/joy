@@ -20,14 +20,32 @@
         background: url("foto1.jpg") no-repeat center center fixed;
         background-size: cover;
         animation: trocar 30s infinite;
-    }
+    body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    color: #3a2f1b;
 
-    @keyframes trocar {
-        0%   { background-image: url("foto1.jpg"); }
-        33%  { background-image: url("foto2.jpg"); }
-        66%  { background-image: url("foto3.jpg"); }
-        100% { background-image: url("foto1.jpg"); }
-    }
+    /* Slideshow de fundo */
+    background: url("foto1.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    animation: trocar 80s infinite; /* 80 segundos para passar por todas */
+}
+
+@keyframes trocar {
+    0%   { background-image: url("foto1.jpeg"); }
+    12.5% { background-image: url("foto2.jpeg"); }
+    25%  { background-image: url("foto3.jpeg"); }
+    37.5% { background-image: url("foto4.jpeg"); }
+    50%  { background-image: url("foto5.jpeg"); }
+    62.5% { background-image: url("foto6.jpeg"); }
+    75%  { background-image: url("foto7.jpeg"); }
+    87.5% { background-image: url("foto8.jpeg"); }
+    100% { background-image: url("foto1.jpeg"); }
+}
 
     .pergaminho {
         background: linear-gradient(180deg, #f7efd2, #efe2b6);
